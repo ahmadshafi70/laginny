@@ -21,6 +21,9 @@ Route::get('test', function () {
 Route::get('test1', function () {
     return view('test1');
 });
+Route::get('test12', function () {
+    return view('test1');
+});
 Route::get('products', function () {
     return view('products');
 });
