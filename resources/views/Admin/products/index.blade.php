@@ -62,7 +62,7 @@
                             <td>{{$row->desc}}</td>
                            
                             <td>
-                              <button class="btn btn-outline-primary">View</button>
+                              <a href="{{ route('editproducts',['id'=>$row->id])}}" class="btn btn-outline-primary">update</a>
                             </td>
                           </tr>
                           @endforeach

@@ -7,14 +7,13 @@ use App\Products;
 use Illuminate\Support\Facades\Session;
 class ProductsController extends Controller
 {
-    public function show(){
-    	return view('admin.products.index');
-    }
+
     public function showaddform(){
     return view('admin.products.addproduct');
     }
     public function showproducts(){
        $products=Products::all(); 
+
     return view('admin.products.index',compact('products',$products));
     }
     public function addproducts(Request $request){
@@ -58,35 +57,42 @@ class ProductsController extends Controller
     			return back();
 
 	}
-     public function update(Request $request){
+    public function editproducts($id) {
+        $products=Products::find($id);
+        return view('admin.products.update',compact('products',$products));
+
+    }
+    public function updateproducts(Request $request){
         
         try{
 
-            $path = null;
+             $path = null;
             if ($request->hasFile('image')) {
-                
+                dd('asdfasf');
                 $size=$request->file('image')->getSize();
                
                 $file = date('YmdHis'). '.'.$request->file('image')->getClientOriginalName();;     
             
                 $path = $request->file('image')->move('assets/images', $file);
-                
+               $products['image']=$path?$path:'';
+
 
             }
 
                 $products=[
                 'title'=>$request->title,
-                'image'=>$path?$path:'',
                 'price'=>$request->price,
                 'status'=>$request->status,
                 'type'=>$request->type,
                 'category_id'=>$request->category_id,
                 'desc'=>$request->description,
-
-                    ];
+                ];
                     // dd($products);
             
-            Products::create($products);
+
+           
+            
+            Products::where('id',$request->id)->update($products);
 
         Session::flash('message','Record has been inseted Successfully');
         Session::flash('result',true);

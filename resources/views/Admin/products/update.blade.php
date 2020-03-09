@@ -21,22 +21,19 @@
                           <tr>
                             <th>Order #</th>
                             <th>title</th>
-                           
                             <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
 
                           <?php $i=0 ?>
-                          @foreach($category as $row) 
+                          @foreach($products as $row) 
                           <tr>
 
                             <td>{{$i=$i+1?$i=$i+1:''}}</td>
                             <td>{{$row->title}}</td>
-                       
-                           
                             <td>
-                              <a href="{{ route('editprocat',['id'=>$row->id])}}" class="btn btn-outline-primary">update</a>
+                              <a href="{{ route('editproducts',['id'=>$row->id])}}" class="btn btn-outline-primary">update</a>
                             </td>
                           </tr>
                           @endforeach

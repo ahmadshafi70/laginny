@@ -77,13 +77,13 @@
               <span class="menu-icon">
                 <i class="mdi mdi-view-list"></i>
               </span>
-              <span class="menu-title">Page Layouts</span>
+              <span class="menu-title">Products</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="page-layouts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/boxed-layout.html">Boxed</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/rtl-layout.html">RTL</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('viewproducts')}}">View Products</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('viewprocat')}}">View Category</a></li>
               </ul>
             </div>
           </li>

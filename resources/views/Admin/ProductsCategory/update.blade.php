@@ -3,7 +3,7 @@
          
           <div class="content-wrapper">
             <div class="page-header">
-              @if(Session::has('message'))
+            @if(Session::has('message'))
                   @if(Session::get('result'))
                   <div class="alert alert-success">
                     {{Session::get('message')}}
@@ -13,14 +13,8 @@
                      {{Session::get('message')}}
                    </div>     
                   @endif
-              @endif
-              <h3 class="page-title"> Form elements </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-              </nav>
+            @endif
+              
             </div>
             <div class="row">
               <div class="col-md-2">
@@ -29,14 +23,18 @@
               <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Add Products Category Title</h4>
+                    <h4 class="card-title">Update Products Category Title</h4>
                   
-                    <form class="forms-sample" action="{{route('admin.productscategory.addprocat')}}" method="POST" enctype="multipart/form-data"> 
+                    <form class="forms-sample" action="{{route('updateprocat')}}" method="POST" enctype="multipart/form-data"> 
                       @csrf
+                       <div class="form-group">
+
+                        <input type="text" name="id" value="{{$category->id}}" class="form-control" id="exampleInputUsername1" placeholder="Username" style="display: none;">
+                      </div>
                       <div class="form-group">
 
                         <label for="exampleInputUsername1">Title</label>
-                        <input type="text" name="title" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                        <input type="text" name="title" value="{{$category->title}}" class="form-control" id="exampleInputUsername1" placeholder="Username">
                       </div>
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>

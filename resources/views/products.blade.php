@@ -14,7 +14,21 @@
 
             @include('layouts.sidebar')
 
-            @include('components.products')
+            
+
+             <div class="col_product">
+                @foreach($products as $item)
+                <div class="product-inner2">
+                    <div class="product_img"><a href="APRICOT(LA306).php"><img src="{{asset($item->image?$item->image:'')}}" border="0" width="100%" class=""></a></div>
+                    <div class="product_heading">{{$item->title?$item->title:''}}</div>
+                    <div class="product_priceonsale">Price : <span class="orange"> {{$item->price}}</span></div>
+                    <a  href="#" class="btn btn-info btn-md" style="background:#3f808a;width: 100%; " data-toggle="modal" data-target="#myModal"><img src="images/template/icon_btncart.png" class="right15">Want To Buy</a>
+
+                    <!--                        <a href="#dialogboxscart"  class="linkAddtoCart" name="81"><div class="product_btnaddtocart"><img src="images/template/icon_btncart.png" class="right15">Add to Cart</div></a>-->
+                </div>
+                 @endforeach
+            </div>
+           
 
 
             </div>
