@@ -1,6 +1,6 @@
 <header class="desktop_show"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <div class="content">
-        <div class="logo"><a href="index.php"><img src="{{asset('assets/images/logo-1.png')}}"></a></div>
+        <div class="logo"><a href="/"><img src="{{asset('assets/images/logo-1.png')}}"></a></div>
         <div class="fright top13" style="color: white">
             Become a Distributor Call Whatsapp & Viber  +66843443444
         </div>
@@ -47,76 +47,23 @@
         </style>
         <nav id="menufix" class="menubar">
             <ul class="menufix">
-                <li><a href="index.php" >Home</a></li>
+                <li><a href="/" >Home</a></li>
                 <li><a href="aboutus_en.php" >About us</a>
                     <!-- <ul class="hassub" style="width:200px;">
                          <li></li>
                                                          </ul>-->
                 </li>
-                <li><a href="product_en.php" >Products</a>
+                <li><a href="{{route('products')}}" >Products</a>
                     <ul class="hassub" style="width:200px;">
                         <li></li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:12px;"><a href="PeelOffMask.php"> Peel Off Mask </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="WhiteningFaceWashFoam.php"> Whitening Face Wash Foam </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;" ><a href=" WhiteningFaceWashFoamMen.php"> Whitening Face Wash Foam Men </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="MiracleSet.php"> Miracle Set </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="LaginnySoap.php"> Laginny Soap </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="HairCoat.php"> Hair Coat </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="AntiAgingSerum.php"> Anti Aging Serum </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="BodyLotion.php"> Body Lotion </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="FaceLotion.php"> Face Lotion </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href=" WhiteningShowerCream.php"> Whitening Shower Cream </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="SUNSCREENPROTECTIONCREAM.php" >Sunscreen Protection Cream </a></div>
-                            <div class="clear"></div>
-                        </li>
 
+                         @foreach(App\ProductsCategory::all() as $item)   
                         <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="LAGINNYEYECREAM.php" >Laginny Eye Cream </a></div>
+                            <div class="fleft timenu" style="font-size:12px;"><a href="{{route('searchbycategory',['id'=>$item->id])}}"> {{$item->title}}</a></div>
                             <div class="clear"></div>
                         </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="LAGINNYWHITNINGPEARL.php" >Laginny Whitening Pearl</a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="LAGINNYEYECREAM.php" >Laginny Eye Cream </a></div>
-                            <div class="clear"></div>
-                        </li>
-                        <li>
-                            <div class="fleft timenu" style="font-size:14px;"><a href="LAGINNYHAIR.php" >Laginny Hair</a></div>
-                            <div class="clear"></div>
-                        </li>
+                        @endforeach
+                       
 
 
 

@@ -21,9 +21,12 @@ Route::get('test', function () {
 Route::get('test12', function () {
     return view('test1');
 });
+Route::get('productsdetails', function () {
+    return view('productdetails');
+})->name('productsdetails');
 Route::get('products', function () {
     return view('products');
-});
+})->name('products');
 Route::get('searchbycategory/{id}','SearchbyCategoryController@searchbycategory'
 )->name('searchbycategory');
 Route::prefix('admin')->group(function(){

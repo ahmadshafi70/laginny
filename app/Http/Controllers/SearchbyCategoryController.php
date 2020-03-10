@@ -9,7 +9,7 @@ class SearchbyCategoryController extends Controller
 public function searchbycategory($id){
 $products=Products::where('category_id',$id)->get();
 // dd($products);
-return view('products',compact('products',$products));
+return view('searchproduct',compact('products',$products));
 
 }
   
