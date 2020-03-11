@@ -21,14 +21,19 @@ Route::get('test', function () {
 Route::get('test12', function () {
     return view('test1');
 });
-Route::get('productsdetails', function () {
-    return view('productdetails');
-})->name('productsdetails');
-Route::get('products', function () {
-    return view('products');
-})->name('products');
+Route::get('productsdetails/{id}','HomeProductController@productsdetails')->name('productsdetails');
+Route::get('aboutus','HomeProductController@aboutus')->name('aboutus');
+Route::get('contactus','HomeProductController@contactus')->name('contactus');
+Route::get('reviewvideo','HomeProductController@reviewvideo')->name('reviewvideo');
+Route::get('contactus','HomeProductController@contactus')->name('contactus');
+Route::get('products','HomeProductController@products')->name('products');
+Route::post('sendmail','MailController@sendmail')->name('sendmail');
+
+
 Route::get('searchbycategory/{id}','SearchbyCategoryController@searchbycategory'
 )->name('searchbycategory');
+
+
 Route::prefix('admin')->group(function(){
   		Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
    	 	Route::post('/login','Auth\LoginController@login')->name('admin.login');

@@ -19,7 +19,7 @@
              <div class="col_product">
                 @foreach(App\Products::all() as $items)
                 <div class="product-inner2">
-                    <div class="product_img"><a href="{{route('productsdetails')}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a></div>
+                    <div class="product_img"><a href=" {{route('productsdetails',['id'=>$items->id])}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a></div>
                     <div class="product_heading">{{$items->title?$items->title:''}}</div>
                     <div class="product_priceonsale">Price : <span class="orange"> $ : {{$items->price}}</span></div>
                     <a  href=" #" class="btn btn-info btn-md" style="background:#3f808a;width: 100%; " data-toggle="modal" data-target="#myModal"><img src="{{asset('assets/images/template/icon_btncart.png')}}" class="right15">Want To Buy</a>

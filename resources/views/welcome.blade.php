@@ -24,7 +24,7 @@ use App\Products;
             <div class="owl-item" style="width: 353px;">
                 <div class="product">
                     <div class="product_img"><a href="
-                        #"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a>
+                        {{route('productsdetails',['id'=>$items->id])}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a>
                     </div>
                     <div class="product_heading">
                     {{$items->title}}
@@ -32,7 +32,7 @@ use App\Products;
                     <div class="product_priceonsale">Price : <span class="orange"> {{$items->price}}</span>
                     </div>
                     <!--                        <a href="#dialogboxscart"  class="linkAddtoCart" name="81"><div class="product_btnaddtocart"><img src="images/template/icon_btncart.png" class="right15">Add to Cart</div></a>-->
-                    <a type="button" class="btn btn-info btn-md" style="background:#3f808a;width: 100%; " data-toggle="modal" data-target="#myModal"><img src="{{asset('assets/images/template/icon_btncart.png')}}" class="right15">Want To Buy</a>
+                    <a type="button" href="#" class="btn btn-info passingID" style="background:#3f808a;width: 100%; " data-toggle="modal"  data-target="#myModal"   data-id="{{$items->id}}" data-title="{{$items->title}}" data-price="{{$items->price}}"  ><img src="{{asset('assets/images/template/icon_btncart.png')}}"   class="right15">Want To Buy</a>
                 </div>
             </div>
         @endforeach
@@ -75,19 +75,18 @@ use App\Products;
             <div class="clear"></div>
             <div class="col_product" style="width: 100%;">
                 @foreach(App\Products::all() as $items )
+                
                 @if($items->type==1)
                 <div class="product-inner2" style="width:23%;">
-                    <div class="product_img"><a href="APRICOT(LA306).php"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a></div>
+                    <div class="product_img"><a href="{{route('productsdetails',['id'=>$items->id])}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a></div>
                     <div class="product_heading">{{$items->title}}</div>
                     <div class="product_priceonsale">Price : <span class="orange"> $ : {{$items->price}}</span></div>
-                    <a type="button" href="#" class="btn btn-info btn-md" style="background:#3f808a;width: 100%; " data-toggle="modal" data-target="#myModal"><img src="{{asset('assets/images/template/icon_btncart.png')}}" class="right15">Want To Buy</a>
+                    <a type="button" href="#" class="btn btn-info passingID" style="background:#3f808a;width: 100%; " data-toggle="modal"  data-target="#myModal"   data-id="{{$items->id}}" data-title="{{$items->title}}" data-price="{{$items->price}}"  ><img src="{{asset('assets/images/template/icon_btncart.png')}}"   class="right15">Want To Buy</a>
                     <!--                        <a href="#dialogboxscart"  class="linkAddtoCart" name="81"><div class="product_btnaddtocart"><img src="images/template/icon_btncart.png" class="right15">Add to Cart</div></a>-->
                 </div>
                 @endif
                 @endforeach
                 
-                
-             
             </div>
             
             <div class="clear"></div>
@@ -130,4 +129,87 @@ use App\Products;
 </div>
 </div>
 </section>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <form action="{{route('sendmail')}}"  method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group" metho="post" style="display: none;" >
+            <input  type="text" class="form-control" name="id" id="id" value="">    
+            </div>
+            <div class="form-group">
+                <label>Product Name</label>
+            <input type="text" class="form-control" name="title" id="title" value="">    
+            </div>
+            <div class="form-group">
+                <label>Product price</label>
+            <input type="text" class="form-control" name="price" id="price" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Full Name</label>
+            <input type="text" class="form-control" name="name" id="name" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Email</label>
+            <input type="text" class="form-control" name="email" id="email" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Phone</label>
+            <input type="text" class="form-control" name="phone" id="phone" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Address</label>
+            <input type="text" class="form-control" name="address" id="address" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Country</label>
+            <input type="text" class="form-control" name="country" id="country" value="">    
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+            <textarea type="text" class="form-control" name="message" id="message" ></textarea>    
+            </div>
+                <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit"  class="btn btn-primary">Send message</button>
+        </div>
+            </form>
+        
+        </div>
+        
+    
+
+     
+      </div>
+      
+    </div>
+  </div>
+        
+  
+
+<script type="text/javascript">
+ $(".passingID").click(function () {
+    var ids = $(this).attr('data-id');
+    var title = $(this).attr('data-title');
+    var price = $(this).attr('data-price');
+
+    $("#id").val( ids );
+    $("#title").val( title );
+    $("#price").val( price );
+
+
+    $('#myModal').modal('show');
+});
+
+
+</script>
 @endsection
