@@ -14,6 +14,7 @@ class Inquiry extends Model
     		'customer_phone',
     		'customer_address',
     		'customer_country',
-    		'customer_message'
+    		'customer_message',
+    		'status'
 ];
 }

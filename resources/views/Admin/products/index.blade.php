@@ -13,6 +13,18 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Data table</h4>
+                <div class="row" > 
+                  <div class="col-md-10">
+                       
+                  </div>
+                  <div class="col-md-2">
+                    <a href="{{ route('showproductsform')}}" class="btn btn-outline-primary">Add Product</a>
+                    
+                  </div>
+                    
+                  <br>
+                  <br>
+                </div>
                 <div class="row">
                   <div class="col-12">
                     <div class="table-responsive">
@@ -26,6 +38,7 @@
                             <th>Type</th>
                             <th>Status</th>
                             <th>Price</th>
+                            <th>Code</th>
                             <th>Description</th>
                             <th>Actions</th>
                           </tr>
@@ -59,6 +72,7 @@
                             </label></td>
                             <td><label class="badge {{ $row->status==1?'badge-info':'badge-primary' }}" >{{ $row->status==1?'active':'disable' }}</label></td>
                             <td>{{$row->price}}</td>
+                            <td>{{$row->code}}</td>
                             <td>{{$row->desc}}</td>
                            
                             <td>

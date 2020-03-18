@@ -59,6 +59,14 @@ Route::prefix('productscategory')->group(function(){
 		Route::post('addprocat','ProductsCategoryController@addprocat')->name('admin.productscategory.addprocat');
 		Route::post('updateprocat','ProductsCategoryController@updateprocat')->name('updateprocat');
 });
+Route::prefix('inquiry')->group(function(){
+	Route::get('showinquiry','InquiryController@index')->name('showinquiry');
+	Route::get('changestatus/{id}/{status}', 'InquiryController@changestatus')->name('changestatus');
+	Route::get('editinquiry/{id}', 'InquiryController@editinquiry')->name('editinquiry');
+	Route::post('updateinquiry', 'InquiryController@updateinquiry')->name('updateinquiry');
+
+});
+
 });
 
 

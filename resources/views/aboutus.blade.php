@@ -62,7 +62,7 @@
 					   <span style="font-size:28px"><span style="color:#ff7d00"><strong> </strong><span style="font-size:26px"></span></span></span><br>
 &nbsp;	<table align="center" border="0" cellpadding="0" cellspacing="0" style="width:80%"><tbody>
 						<tr>
-					<td><strong>   <img src="images/home-2.jpg" style="width: 100%; margin: 100px 20px 0px 0px;"></strong></td>
+					<td><strong><img src="{{asset('assets/images/home-2.jpg')}}" style="width: 100%; margin: 100px 20px 0px 0px;"></strong></td>
 						</tr>
 						</tbody>
 </table>

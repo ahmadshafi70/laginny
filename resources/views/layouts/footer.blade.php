@@ -75,7 +75,7 @@
 </footer>
 
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
-<script type="text/javascript" src="../s7.addthis.com/js/300/addthis_widget.js#pubid=ra-535f32dc452840ef"></script>
+<!-- <script type="text/javascript" src="../s7.addthis.com/js/300/addthis_widget.js#pubid=ra-535f32dc452840ef"></script>
 <style>
     #lean_overlay {
         position: fixed;
@@ -88,8 +88,8 @@
         display: none;
     }
 
-</style>
-<script type="text/javascript" src="lib_js/jquery.leanModal.min.js"></script>
+</style> -->
+<script type="text/javascript" src="{{asset('assets/lib_js/jquery.leanModal.min.js')}}"></script>
 <script>
     $(document).ready(function(){
         $("#linkLogin").click(function(){

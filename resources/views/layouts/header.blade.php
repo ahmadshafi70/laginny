@@ -48,7 +48,7 @@
         <nav id="menufix" class="menubar">
             <ul class="menufix">
                 <li><a href="/" >Home</a></li>
-                <li><a href="aboutus_en.php" >About us</a>
+                <li><a href="{{route('aboutus')}}" >About us</a>
                     <!-- <ul class="hassub" style="width:200px;">
                          <li></li>
                                                          </ul>-->
@@ -72,9 +72,9 @@
                 </li>
                 <!-- <li><a href="review_en.html" >Review</a></li>
                 <li><a href="location_en.html" >Store Location</a></li> -->
-                <li><a href="reviewvideo.php" >Review Video</a></li>
+                <li><a href="{{route('reviewvideo')}}" >Review Video</a></li>
 <!--                <li><a href="howtobuy_en.php" >How to buy</a></li>-->
-                <li><a href="contactus_en.php" >Contact us</a></li>
+                <li><a href="{{route('contactus')}}" >Contact us</a></li>
             </ul>
         </nav>
         <div class="clear"></div>

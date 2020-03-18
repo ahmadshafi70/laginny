@@ -92,16 +92,13 @@
               <span class="menu-icon">
                 <i class="mdi mdi-crosshairs-gps"></i>
               </span>
-              <span class="menu-title">Sidebar Layouts</span>
+              <span class="menu-title">Inquiry</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="sidebar-layouts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/compact-menu.html">Compact menu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-collapsed.html">Icon menu</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-hidden.html">Sidebar Hidden</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-hidden-overlay.html">Sidebar Overlay</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/layout/sidebar-fixed.html">Sidebar Fixed</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('showinquiry')}}">View Inquiries</a></li>
+              
               </ul>
             </div>
           </li>

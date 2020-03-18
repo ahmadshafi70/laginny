@@ -20,6 +20,7 @@ class MailController extends Controller
     		'customer_address'=>$request->address,
     		'customer_country'=>$request->country,
     		'customer_message'=>$request->message,
+            'status'=>0,
 	];
 
 		Inquiry::create($data);

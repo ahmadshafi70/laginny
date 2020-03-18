@@ -52,8 +52,12 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputUsername1">price</label>
+                        <label for="exampleInputUsername1">Price</label>
                         <input type="text" name="price" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputUsername1">Code</label>
+                        <input type="text" name="code" class="form-control" id="exampleInputUsername1" placeholder="Username">
                       </div>
                       <div class="form-group">
                           <label for="exampleSelectGender">Status</label>

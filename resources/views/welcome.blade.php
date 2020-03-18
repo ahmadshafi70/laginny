@@ -15,32 +15,26 @@ use App\Products;
     <div class="linetitleorange"><a href="product_en.php">more +</a></div>
     <div class="clear"></div>
 
-<div id="prodslide" style="width: 100%; opacity: 1; display: block;" class="owl-carousel owl-theme">
-    
-    <div class="owl-wrapper-outer">
 
-        <div class="owl-wrapper" style="width: 4236px; left: 0px; display: block; transform: translate3d(-1059px, 0px, 0px); transition: all 400ms ease 0s;">
-        @foreach(App\Products::all() as $items )
-            <div class="owl-item" style="width: 353px;">
-                <div class="product">
-                    <div class="product_img"><a href="
+ <div  id="prodslide" style="width:100%">
+    @foreach(App\Products::all() as $items )
+        @if($items->type==1 & $items->status==1)
+            <div class="product">
+                  <div class="product_img"><a href="
                         {{route('productsdetails',['id'=>$items->id])}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a>
                     </div>
                     <div class="product_heading">
-                    {{$items->title}}
-                    </div>
-                    <div class="product_priceonsale">Price : <span class="orange"> {{$items->price}}</span>
-                    </div>
-                    <!--                        <a href="#dialogboxscart"  class="linkAddtoCart" name="81"><div class="product_btnaddtocart"><img src="images/template/icon_btncart.png" class="right15">Add to Cart</div></a>-->
-                    <a type="button" href="#" class="btn btn-info passingID" style="background:#3f808a;width: 100%; " data-toggle="modal"  data-target="#myModal"   data-id="{{$items->id}}" data-title="{{$items->title}}" data-price="{{$items->price}}"  ><img src="{{asset('assets/images/template/icon_btncart.png')}}"   class="right15">Want To Buy</a>
-                </div>
-            </div>
+                        {{$items->title}}</div>
+                        <div class="product_priceonsale">Price : <span class="orange"> {{$items->price}}</span></div>
+                       <a type="button" href="#" class="btn btn-info passingID" style="background:#3f808a;width: 100%; " data-toggle="modal"  data-target="#myModal"   data-id="{{$items->id}}" data-title="{{$items->title}}" data-price="{{$items->price}}"  ><img src="{{asset('assets/images/template/icon_btncart.png')}}"   class="right15">Want To Buy</a>
+                        </div>
+                           @endif
         @endforeach
-        </div>
-    </div>
+
 </div>
 
-         
+
+     
                 
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slide.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slide_theme.css')}}">
@@ -76,7 +70,7 @@ use App\Products;
             <div class="col_product" style="width: 100%;">
                 @foreach(App\Products::all() as $items )
                 
-                @if($items->type==1)
+                @if($items->type==2 & $items->status==1)
                 <div class="product-inner2" style="width:23%;">
                     <div class="product_img"><a href="{{route('productsdetails',['id'=>$items->id])}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a></div>
                     <div class="product_heading">{{$items->title}}</div>
