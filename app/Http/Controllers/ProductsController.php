@@ -144,5 +144,23 @@ class ProductsController extends Controller
                 return back();
 
     }
+    public function deleteproducts($id){
+        try{
+    $products=Products::find($id)->delete();    
+    Session::flash('message','Product Has Been Delete Successfully !');
+    Session::flash('result',true);
+
+        }
+        catch (\ Exception $e){
+    Session::flash('message',$e->getMessage());
+    Session::flash('result',true);
+
+        }
+        return back();
+
+    
+
+
+    }
 
 }

@@ -15,6 +15,8 @@ class Inquiry extends Model
     		'customer_address',
     		'customer_country',
     		'customer_message',
-    		'status'
+    		'status',
+            'qty',
+            'total_price',
 ];
 }

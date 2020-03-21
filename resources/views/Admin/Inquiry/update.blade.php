@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-         
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
           <div class="content-wrapper">
             <div class="page-header">
             @if(Session::has('message'))
@@ -20,6 +20,7 @@
               <div class="col-md-2">
                 
               </div>
+
               <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -31,20 +32,26 @@
 
                         <input type="text" name="id" value="{{$inquiry->id}}" class="form-control" id="exampleInputUsername1" placeholder="Username" style="display: none;">
                       </div>
-                      <div class="form-group">
-
-                        
-                        <input type="text" name="product_title" value="{{$inquiry->product_id}}" style="display: none;" class="form-control" id="exampleInputUsername1" placeholder="Product Title">
-                      </div>
+                     
                       <div class="form-group">
 
                         <label for="exampleInputUsername1">Product Title</label>
                         <input type="text" name="product_title" value="{{$inquiry->product_title}}" class="form-control" id="exampleInputUsername1" placeholder="Product Title">
                       </div>
+                      <div class="form-group">
+
+                        <label for="exampleInputUsername1">Product Quantity</label>
+                        <input type="text" name="qty" value="{{$inquiry->qty}}" class="form-control" id="qty" placeholder="Product Quantity">
+                      </div>
                         <div class="form-group">
 
                         <label for="exampleInputUsername1">Product Price</label>
-                        <input type="text" name="product_price" value="{{$inquiry->product_price}}" class="form-control" id="exampleInputUsername1" placeholder="Product Price">
+                        <input type="text" name="product_price" value="{{$inquiry->product_price}}" class="form-control" id="price" placeholder="Product Price">
+                      </div>
+                      <div class="form-group">
+
+                        <label for="exampleInputUsername1">Total Price</label>
+                        <input type="text" name="total_price" value="{{$inquiry->total_price}}" class="form-control" id="total" placeholder="Total Price">
                       </div>
                         <div class="form-group">
 
@@ -64,12 +71,12 @@
                         <div class="form-group">
 
                         <label for="exampleInputUsername1">Customer Phone</label>
-                        <input type="text" name="customer_phone" value="{{$inquiry->customer_phone}}" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                        <input type="text" name="customer_phone" value="{{$inquiry->customer_phone}}" class="form-control" id="exampleInputUsername1" placeholder="Customer Phone">
                       </div>
                         <div class="form-group">
 
                         <label for="exampleInputUsername1">Customer Address</label>
-                        <input type="text" name="customer_address" value="{{$inquiry->customer_address}}" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                        <input type="text" name="customer_address" value="{{$inquiry->customer_address}}" class="form-control" id="exampleInputUsername1" placeholder="Customer Address">
                       </div>
                         <div class="form-group">
 
@@ -98,4 +105,33 @@
             </div>
           </div>
        
+<script type="text/javascript">
+$('#qty').on('keyup',function(){
+      // alert('asfhasdjk');
+
+ var qty = $('#qty').val();
+ // alert(qty);      
+ var price = $('#price').val();
+var t= qty*price;
+// alert(t);
+ $('#total').val(t);
+
+});
+$('#price').on('keyup',function(){
+ var qty = $('#qty').val();
+ var price = $("#price").val();
+var t= qty*price;
+// alert(t);
+
+ $('#total').val(t);
+});
+$('#btn').on('submit',function(){
+ var qty = $('#qty').val();
+ var price = $("#price").val();
+var t= qty*price;
+// alert(t);
+
+ $('#total').val(t);
+});
+</script>
 @endsection

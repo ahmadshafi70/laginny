@@ -132,57 +132,57 @@ use App\Products;
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Fill Your Inquiry Header</h4>
         </div>
         <div class="modal-body">
           <form action="{{route('sendmail')}}"  method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group" metho="post" style="display: none;" >
-            <input  type="text" class="form-control" name="id" id="id" value="">    
+            <input  type="text" class="form-control" name="id" id="id" value="" >    
             </div>
             <div class="form-group">
-                <label>Product Name</label>
-            <input type="text" class="form-control" name="title" id="title" value="">    
+                <label>Product Title</label>
+            <input type="text" class="form-control" name="product_title" id="title" >    
             </div>
             <div class="form-group">
-                <label>Product Qty</label>
-            <input type="text" class="form-control" name="qty" id="qty" value="">    
+                <label>Product Qunatity </label>
+            <input type="text" class="form-control" name="qty" id="qty" value="1">    
             </div>
             <div class="form-group">
-                <label>Product price</label>
+                <label>Product Price</label>
             <input type="text" class="form-control" name="price" id="price" value="">    
             </div>
             <div class="form-group">
-                <label>Product price</label>
-            <input type="text" class="form-control" name="price" id="price" value="">    
+                <label>Total Price</label>
+            <input type="text" class="form-control" name="total_price" id="total" value="">    
             </div>
             <!-- <div class="form-group">
-                <label>Product price</label>
+                <label>Product Price</label>
             <input type="text" class="form-control" name="price" id="price" value="">    
             </div> -->
             <div class="form-group">
                 <label>Your Full Name</label>
-            <input type="text" class="form-control" name="name" id="name" value="">    
+            <input type="text" class="form-control" name="name" id="name" value="" required>    
             </div>
             <div class="form-group">
                 <label>Your Email</label>
-            <input type="text" class="form-control" name="email" id="email" value="">    
+            <input type="text" class="form-control" name="email" id="email" value="" required>    
             </div>
             <div class="form-group">
                 <label>Your Phone</label>
-            <input type="text" class="form-control" name="phone" id="phone" value="">    
+            <input type="text" class="form-control" name="phone" id="phone" value="" required>    
             </div>
             <div class="form-group">
-                <label>Your Address</label>
-            <input type="text" class="form-control" name="address" id="address" value="">    
+                <label> Your Address</label>
+            <input type="text" class="form-control" name="address" id="address" value="" required>    
             </div>
             <div class="form-group">
                 <label>Your Country</label>
-            <input type="text" class="form-control" name="country" id="country" value="">    
+            <input type="text" class="form-control" name="country" id="country" value="" required>    
             </div>
             <div class="form-group">
                 <label>Description</label>
-            <textarea type="text" class="form-control" name="message" id="message" ></textarea>    
+            <textarea type="text" class="form-control" name="message" id="message" required></textarea>    
             </div>
                 <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -199,6 +199,7 @@ use App\Products;
       
     </div>
   </div>
+
         
   
 
@@ -211,6 +212,7 @@ use App\Products;
     $("#id").val( ids );
     $("#title").val( title );
     $("#price").val( price );
+    $("#total").val( price );
 
 
     $('#myModal').modal('show');
@@ -218,6 +220,9 @@ use App\Products;
 
 
 </script>
+
+
+
 <script type="text/javascript">
     $('#qty').on('keyup',function(){
 

@@ -34,7 +34,9 @@
                           <tr>
                             <th>Order #</th>
                             <th>Product Title</th>
+                            <th>Qunatity</th>
                             <th>Prodcut Price</th>
+                            <th>Total Price</th>
                             <th>Customer Name</th>
                             <th>Customer Email</th>
                             <th>Customer Country</th>
@@ -52,7 +54,9 @@
 
                             <td>{{$i=$i+1?$i=$i+1:''}}</td>
                             <td>{{$row->product_title}}</td>
+                            <td>{{$row->qty}}</td>
                             <td>{{$row->product_price}}</td>
+                            <td>{{$row->total_price}}</td>
                             <td>{{$row->customer_name}}</td>
                             <td>{{$row->cutomer_email}}</td>
                             <td>{{$row->customer_country}}</td>

@@ -40,7 +40,8 @@ class InquiryController extends Controller
 
     }
     public function updateinquiry( Request $request ){
-    	 	$data=[
+    	 	// dd($request);
+            $data=[
     		'product_id'=>$request->id,
     		'product_title'=>$request->product_title,
     		'product_price'=>$request->product_price,
@@ -51,6 +52,8 @@ class InquiryController extends Controller
     		'customer_country'=>$request->customer_country,
     		'customer_message'=>$request->customer_message,
             'status'=>$request->status,
+            'qty'=>$request->qty,
+            'total_price'=>$request->total_price,
 	];
 
 	 Inquiry::where('id',$request->id)->update($data);

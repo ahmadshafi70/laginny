@@ -50,6 +50,7 @@ Route::prefix('products')->group(function(){
 
 		Route::post('addproducts','ProductsController@addproducts')->name('admin.products.addproducts');
 		Route::get('editproducts/{id}','ProductsController@editproducts')->name('editproducts');
+		Route::get('deleteproducts/{id}','ProductsController@deleteproducts')->name('deleteproducts');
 		Route::post('updateproducts','ProductsController@updateproducts')->name('admin.products.updateproducts');
 
 

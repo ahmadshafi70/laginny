@@ -1,12 +1,31 @@
 @extends('admin.layouts.app')
 @section('content')
  <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title"> Data table </h3>
+     <div class="page-header">
+              @if(Session::has('message'))
+                  @if(Session::get('result'))
+                  <div class="alert alert-success">
+                    {{Session::get('message')}}
+                  </div>
+                   @else
+                   <div class="alert aler-danger">
+                     {{Session::get('message')}}
+                   </div>     
+                  @endif
+              @endif
+              <h3 class="page-title">All Products </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Data table</li>
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="page-header">
+             
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+          
                 </ol>
               </nav>
             </div>
@@ -77,6 +96,7 @@
                            
                             <td>
                               <a href="{{ route('editproducts',['id'=>$row->id])}}" class="btn btn-outline-primary">update</a>
+                              <a href="{{ route('deleteproducts',['id'=>$row->id])}}" class="btn btn-outline-primary">delete</a>
                             </td>
                           </tr>
                           @endforeach

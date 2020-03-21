@@ -18,71 +18,118 @@
 
              <div class="col_product">
                 @foreach(App\Products::all() as $items)
+                  @if($items->status==1)
                 <div class="product-inner2 line-content">
                     <div class="product_img"><a href=" {{route('productsdetails',['id'=>$items->id])}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a></div>
                     <div class="product_heading">{{$items->title?$items->title:''}}</div>
                     <div class="product_priceonsale">Price : <span class="orange"> $ : {{$items->price}}</span></div>
-                    <a  href=" #" class="btn btn-info btn-md" style="background:#3f808a;width: 100%; " data-toggle="modal" data-target="#myModal"><img src="{{asset('assets/images/template/icon_btncart.png')}}" class="right15">Want To Buy</a>
+                   
+                   <a type="button" href="#" class="btn btn-info passingID" style="background:#3f808a;width: 100%; " data-toggle="modal"  data-target="#myModal"   data-id="{{$items->id}}" data-title="{{$items->title}}" data-price="{{$items->price}}"  ><img src="{{asset('assets/images/template/icon_btncart.png')}}"   class="right15">Want To Buy</a>
 
                     <!--                        <a href="#dialogboxscart"  class="linkAddtoCart" name="81"><div class="product_btnaddtocart"><img src="images/template/icon_btncart.png" class="right15">Add to Cart</div></a>-->
                 </div>
+                @endif
                  @endforeach
             </div>
            
 
 
             </div>
-<ul class="prev">prev</ul>
-<ul id="pagin"></ul>
-<ul class="next">next</ul>
-<ul class="last">last</ul>
+           
             <div class="clear"></div>
             <div class="top45"></div>
-        </div>
+             <div class="row">
+                <div  class="col-md-4"></div>
+                  <div class="col-sm-4">
+            
+                    <div class="row">
+                        <div class="col-sm-3">
+                           <ul class="next">next</ul>
+                                </div>
+                        <div class="col-sm-4">
+                           <ul id="pagin"></ul>
+                                    </div>
+                        <div class="col-sm-3">
+                            <ul class="last">last</ul>
+                            </div>
+                    </div>
+                </div>
+                        
+         </div>
+            </div>
         <div class="clear"></div>
     </section>
 
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">
-                            Contact Us
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <form role="form" method="post" id="reused_form">
-                            <p> Send your message in the form below and we will get back to you as early as possible. </p>
-                            <div class="form-group">
-                                <label for="name"> Name:</label>
-                                <input type="text" class="form-control" id="name" name="name" required maxlength="50">
-                            </div>
-                            <div class="form-group">
-                                <label for="email"> Email:</label>
-                                <input type="email" class="form-control" id="email" name="email" required maxlength="50">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Phone :</label>
-                                <input type="text" class="form-control" id="phone" name="phone" required maxlength="50">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Country :</label>
-                                <input type="text" class="form-control" id="country" name="country" required maxlength="50">
-                            </div>
-                            <div class="form-group">
-                                <label for="name"> Message:</label>
-                                <textarea class="form-control" type="textarea" name="message" id="message" placeholder="Your Message Here" maxlength="6000" rows="7"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-lg btn-success btn-block" style="background:#3f808a; " id="btnContactUs">Send&rarr;</button>
-                        </form>
-                        <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your message successfully!</h3> </div>
-                        <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
-                    </div>
-                </div>
-            </div>
+      <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
         </div>
+        <div class="modal-body">
+          <form action="{{route('sendmail')}}"  method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group" metho="post" style="display: none;" >
+            <input  type="text" class="form-control" name="id" id="id" value="">    
+            </div>
+            <div class="form-group">
+                <label>Product Qunatity </label>
+            <input type="text" class="form-control" name="qty" id="qty" value="1">    
+            </div>
+            <div class="form-group">
+                <label>Product Price</label>
+            <input type="text" class="form-control" name="price" id="price" value="">    
+            </div>
+            <div class="form-group">
+                <label>Total Price</label>
+            <input type="text" class="form-control" name="total_price" id="total" value="">    
+            </div>
+            <!-- <div class="form-group">
+                <label>Product Price</label>
+            <input type="text" class="form-control" name="price" id="price" value="">    
+            </div> -->
+            <div class="form-group">
+                <label>Your Full Name</label>
+            <input type="text" class="form-control" name="name" id="name" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Email</label>
+            <input type="text" class="form-control" name="email" id="email" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Phone</label>
+            <input type="text" class="form-control" name="phone" id="phone" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Address</label>
+            <input type="text" class="form-control" name="address" id="address" value="">    
+            </div>
+            <div class="form-group">
+                <label>Your Country</label>
+            <input type="text" class="form-control" name="country" id="country" value="">    
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+            <textarea type="text" class="form-control" name="message" id="message" ></textarea>    
+            </div>
+                <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit"  class="btn btn-primary">Send message</button>
+        </div>
+            </form>
+        
+        </div>
+        
+    
+
+     
+      </div>
+      
+    </div>
+  </div>
 
     <div class="clear"></div>
 
@@ -94,7 +141,7 @@
         <div id="dialogboxscart-ct">
         </div>
     </div>    </div> <!-- end main -->
-    <style type="text/css">
+<style type="text/css">
   .current {
   color: green;
 }
@@ -103,6 +150,24 @@
   display: inline-block;
 }
 </style>
+
+<script type="text/javascript">
+ $(".passingID").click(function () {
+    var ids = $(this).attr('data-id');
+    var title = $(this).attr('data-title');
+    var price = $(this).attr('data-price');
+
+    $("#id").val( ids );
+    $("#title").val( title );
+    $("#price").val( price );
+    $("#total").val( price );
+
+
+    $('#myModal').modal('show');
+});
+
+
+</script>
 <script type="text/javascript">
   //Pagination
   pageSize = 5;
@@ -129,6 +194,34 @@
       $(this).addClass("current");
       showPage(parseInt($(this).text())) 
   });
+</script>
+<script type="text/javascript">
+    $('#qty').on('keyup',function(){
+
+ var qty = $('#qty').val();
+ // alert(qty);      
+ var price = $('#price').val();
+var t= qty*price;
+// alert(t);
+ $('#total').val(t);
+
+});
+$('#price').on('keyup',function(){
+ var qty = $('#qty').val();
+ var price = $("#price").val();
+var t= qty*price;
+// alert(t);
+
+ $('#total').val(t);
+});
+$('#btn').on('submit',function(){
+ var qty = $('#qty').val();
+ var price = $("#price").val();
+var t= qty*price;
+// alert(t);
+
+ $('#total').val(t);
+});
 </script>
 @endsection
 
