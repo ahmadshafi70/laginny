@@ -18,7 +18,7 @@
 
              <div class="col_product">
                 @foreach(App\Products::all() as $items)
-                <div class="product-inner2">
+                <div class="product-inner2 line-content">
                     <div class="product_img"><a href=" {{route('productsdetails',['id'=>$items->id])}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a></div>
                     <div class="product_heading">{{$items->title?$items->title:''}}</div>
                     <div class="product_priceonsale">Price : <span class="orange"> $ : {{$items->price}}</span></div>
@@ -32,7 +32,10 @@
 
 
             </div>
-
+<ul class="prev">prev</ul>
+<ul id="pagin"></ul>
+<ul class="next">next</ul>
+<ul class="last">last</ul>
             <div class="clear"></div>
             <div class="top45"></div>
         </div>
@@ -91,6 +94,42 @@
         <div id="dialogboxscart-ct">
         </div>
     </div>    </div> <!-- end main -->
+    <style type="text/css">
+  .current {
+  color: green;
+}
+
+#pagin li {
+  display: inline-block;
+}
+</style>
+<script type="text/javascript">
+  //Pagination
+  pageSize = 5;
+
+  var pageCount =  $(".line-content").length / pageSize;
+    
+     for(var i = 0 ; i<pageCount;i++){
+        
+       $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
+     }
+        $("#pagin li").first().find("a").addClass("current")
+    showPage = function(page) {
+      $(".line-content").hide();
+      $(".line-content").each(function(n) {
+          if (n >= pageSize * (page - 1) && n < pageSize * page)
+              $(this).show();
+      });        
+  }
+    
+  showPage(1);
+
+  $("#pagin li a").click(function() {
+      $("#pagin li a").removeClass("current");
+      $(this).addClass("current");
+      showPage(parseInt($(this).text())) 
+  });
+</script>
 @endsection
 
 

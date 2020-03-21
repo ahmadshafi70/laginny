@@ -15,13 +15,14 @@ class Is_admin
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->role == 1 )
+          // dd(Auth::user()->role); 
+        if ( Auth::check() && Auth::user()->role_id == 1 )
     {
         // dd('i am admin');
         return $next($request);
     }
 
-    return redirect('/user');
+    return redirect('/');
         
     }
 }

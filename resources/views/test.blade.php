@@ -1,86 +1,61 @@
-@extends('admin.layouts.app')
-@section('content')
- <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title"> Data table </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Data table</li>
-                </ol>
-              </nav>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Data table</h4>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="table-responsive">
-                      <table id="order-listing" class="table">
-                        <thead>
-                          <tr>
-                            <th>Order #</th>
-                            <th>Purchased On</th>
-                            <th>Customer</th>
-                            <th>Ship to</th>
-                            <th>Base Price</th>
-                            <th>Purchased Price</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>2012/08/03</td>
-                            <td>Edinburgh</td>
-                            <td>New York</td>
-                            <td>$1500</td>
-                            <td>$3200</td>
-                            <td>
-                              <label class="badge badge-info">On hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>2015/04/01</td>
-                            <td>Doe</td>
-                            <td>Brazil</td>
-                            <td>$4500</td>
-                            <td>$7500</td>
-                            <td>
-                              <label class="badge badge-danger">Pending</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>2010/11/21</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                          </tr>
-                      
-                      
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-   
-@endsection 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<div class="line-content">1 I have some content</div>
+<div class="line-content">2 I have some content</div>
+<div class="line-content">5 I have some content</div>
+<div class="line-content">6 I have some content</div>
+<div class="line-content">7 I have some content</div>
+<div class="line-content">8 I have some content</div>
+<div class="line-content">9 I have some content</div>
+<div class="line-content">10 I have some content</div>
+<div class="line-content">11 I have some content</div>
+<div class="line-content">12 I have some content</div>
+<div class="line-content">13 I have some content</div>
+<div class="line-content">14 I have some content</div>
+<div class="line-content">15 I have some content</div>
+<div class="line-content">16 I have some content</div>
+<div class="line-content">17 I have some content</div>
+<div class="line-content">18 I have some content</div>
+<div class="line-content">19 I have some content</div>
+<div class="line-content">20 I have some content</div>
+<div class="line-content">21 I have some content</div>
+<div class="line-content">22 I have some content</div>
+<ul class="prev">prev</ul>
+<ul id="pagin"></ul>
+<ul class="next">next</ul>
+<ul class="last">last</ul>
+<style type="text/css">
+  .current {
+  color: green;
+}
+
+#pagin li {
+  display: inline-block;
+}
+</style>
+<script type="text/javascript">
+  //Pagination
+  pageSize = 9;
+
+  var pageCount =  $(".line-content").length / pageSize;
+    
+     for(var i = 0 ; i<pageCount;i++){
+        
+       $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
+     }
+        $("#pagin li").first().find("a").addClass("current")
+    showPage = function(page) {
+      $(".line-content").hide();
+      $(".line-content").each(function(n) {
+          if (n >= pageSize * (page - 1) && n < pageSize * page)
+              $(this).show();
+      });        
+  }
+    
+  showPage(1);
+
+  $("#pagin li a").click(function() {
+      $("#pagin li a").removeClass("current");
+      $(this).addClass("current");
+      showPage(parseInt($(this).text())) 
+  });
+</script>

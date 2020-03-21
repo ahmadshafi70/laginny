@@ -15,15 +15,15 @@ class Is_user
      */
     public function handle($request, Closure $next)
     {
-    
-    if ( Auth::check() && Auth::user()->role == 2 )
+            // dd(Auth::user()->role);    
+    if ( Auth::check() && Auth::user()->role_id== 2 )
     {
 
-        dd('i am user');
+        // dd('i am user');
         return $next($request);
     }
 
-    return redirect('/admin');
+    return redirect('/');
 
 
 

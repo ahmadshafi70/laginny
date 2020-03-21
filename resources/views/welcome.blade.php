@@ -145,9 +145,21 @@ use App\Products;
             <input type="text" class="form-control" name="title" id="title" value="">    
             </div>
             <div class="form-group">
+                <label>Product Qty</label>
+            <input type="text" class="form-control" name="qty" id="qty" value="">    
+            </div>
+            <div class="form-group">
                 <label>Product price</label>
             <input type="text" class="form-control" name="price" id="price" value="">    
             </div>
+            <div class="form-group">
+                <label>Product price</label>
+            <input type="text" class="form-control" name="price" id="price" value="">    
+            </div>
+            <!-- <div class="form-group">
+                <label>Product price</label>
+            <input type="text" class="form-control" name="price" id="price" value="">    
+            </div> -->
             <div class="form-group">
                 <label>Your Full Name</label>
             <input type="text" class="form-control" name="name" id="name" value="">    
@@ -205,5 +217,33 @@ use App\Products;
 });
 
 
+</script>
+<script type="text/javascript">
+    $('#qty').on('keyup',function(){
+
+ var qty = $('#qty').val();
+ // alert(qty);      
+ var price = $('#price').val();
+var t= qty*price;
+// alert(t);
+ $('#total').val(t);
+
+});
+$('#price').on('keyup',function(){
+ var qty = $('#qty').val();
+ var price = $("#price").val();
+var t= qty*price;
+// alert(t);
+
+ $('#total').val(t);
+});
+$('#btn').on('submit',function(){
+ var qty = $('#qty').val();
+ var price = $("#price").val();
+var t= qty*price;
+// alert(t);
+
+ $('#total').val(t);
+});
 </script>
 @endsection

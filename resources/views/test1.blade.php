@@ -1,96 +1,43 @@
-@extends('admin.layouts.app')
-@section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<div class="line-content">1 I have some content</div>
+<div class="line-content">2 I have some content</div>
+<ul class="prev">prev</ul>
+<ul id="pagin"></ul>
+<ul class="next">next</ul>
+<ul class="last">last</ul>
+<style type="text/css">
+  .current {
+  color: green;
+}
+
+#pagin li {
+  display: inline-block;
+}
+</style>
+<script type="text/javascript">
+  //Pagination
+  pageSize = 4;
+
+  var pageCount =  $(".line-content").length / pageSize;
     
-          <div class="content-wrapper">
-            <div class="page-header">
-              @if(Session::has('message')
-                  @if(Session::has('result'))
-                  <div class="alert alert-success">
-                    {{Session::get('message')}}
-                  </div>
-                   @else
-                   <div class="alert aler-danger">
-                     {{Session::get('message')}}
-                   </div>     
-                  @endif
-              @endif
-              <h3 class="page-title"> Form elements </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                </ol>
-              </nav>
-            </div>
-            <div class="row">
-              <div class="col-md-2">
-                
-              </div>
-              <div class="col-md-8 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Basic form layout </p>
-                    <form class="forms-sample" action="{{route('')}}" method="post" enctype="multipart/form-data"> 
-                      <div class="form-group">
-                        <label for="exampleInputUsername1">Title</label>
-                        <input type="text" name="title" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputUsername1">Drop Your Product Image Here</label>
-                        <input type="file" class="dropify" />
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleSelectGender">Category</label>
-                        <select class="form-control" name="cat_id" id="exampleSelectGender" >
-                          <option value="1">Cat Name</option>
+     for(var i = 0 ; i<pageCount;i++){
+        
+       $("#pagin").append('<li><a href="#">'+(i+1)+'</a></li> ');
+     }
+        $("#pagin li").first().find("a").addClass("current")
+    showPage = function(page) {
+      $(".line-content").hide();
+      $(".line-content").each(function(n) {
+          if (n >= pageSize * (page - 1) && n < pageSize * page)
+              $(this).show();
+      });        
+  }
+    
+  showPage(1);
 
-                          
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputUsername1">price</label>
-                        <input type="text" name="price" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                      </div>
-                      <div class="form-group">
-                          <label for="exampleSelectGender">Status</label>
-                          <select class="form-control" name="status" id="exampleSelectGender" >
-                            <option value="1">Active</option>
-                            <option value="0">Disabled</option>
-                          </select>
-                      </div>
-                     <div class="form-group">
-                          <label for="exampleSelectGender">Type</label>
-                          <select class="form-control" name="type" id="exampleSelectGender" >
-                          
-                            <option value="1">Featured</option>
-                            <option value="2">Recommended</option>\
-                            <option value="3">Other</option>
-                          </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputUsername1">Description</label>
-                        <textarea type="text" name="description" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                        </textarea>
-
-                      </div>
-
-
-                     
-                    
-                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                      <button class="btn btn-dark">Cancel</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-2">
-                
-              </div>
-             
-            
-            
-            </div>
-          </div>
-       
-@endsection
+  $("#pagin li a").click(function() {
+      $("#pagin li a").removeClass("current");
+      $(this).addClass("current");
+      showPage(parseInt($(this).text())) 
+  });
+</script>
