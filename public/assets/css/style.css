@@ -1,0 +1,411 @@
+.cd-img-replace {
+  /* replace text with a background-image */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* -------------------------------- 
+
+Main components 
+
+-------------------------------- */
+.cd-main-content {
+  /* set a min-height and a z-index to be sure that the main element completely covers the lateral menu */
+  min-height: 100%;
+  position: relative;
+  background-color: #f5f4e9;
+  z-index: 2;
+  padding-top: 60px;
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.cd-main-content.lateral-menu-is-open {
+  /* translate to show the lateral menu - all content needs to be put in the .cd-main-content to translate*/
+  -webkit-transform: translateX(-260px);
+  -moz-transform: translateX(-260px);
+  -ms-transform: translateX(-260px);
+  -o-transform: translateX(-260px);
+  transform: translateX(-260px);
+}
+/*@media only screen and (min-width: 768px) {
+  .cd-main-content {
+    padding-top: 60px;
+  }
+}*/
+
+@media(max-width: 979px) {
+header {
+  position:fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  z-index: 99999;
+  background:#fff;
+  border-bottom:solid 4px #5bc6d6;
+  /*background: rgba(42,0,40,1);
+  background: -moz-linear-gradient(-45deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(42,0,40,1)), color-stop(50%, rgba(50,1,48,1)), color-stop(100%, rgba(84,11,82,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  background: linear-gradient(135deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a0028', endColorstr='#540b52', GradientType=1 );*/
+  
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+header.lateral-menu-is-open {
+  /* translate to show the lateral menu */
+  -webkit-transform: translateX(-260px);
+  -moz-transform: translateX(-260px);
+  -ms-transform: translateX(-260px);
+  -o-transform: translateX(-260px);
+  transform: translateX(-260px);
+
+}
+header.is-fixed {
+  position: fixed;
+  z-index:9999;
+}
+}
+
+@media only screen and (min-width: 967px) {
+  header {
+    height: 60px;
+  }
+}
+
+#cd-logo {
+  display: block;
+  float: left;
+  margin: 0px 0 0 0px;
+}
+#cd-logo img {
+  display: block;
+}
+@media only screen and (min-width: 967px) {
+  #cd-logo {
+    margin: 22px 0 0 30px;
+  }
+}
+
+#cd-top-nav {
+  position: absolute;
+  top: 0;
+  right: 120px;
+  height: 100%;
+  display: none;
+}
+#cd-top-nav ul {
+  height: 100%;
+  padding-top: 18px;
+}
+#cd-top-nav li {
+  display: inline-block;
+  margin-right: 1em;
+}
+#cd-top-nav a {
+  display: inline-block;
+  padding: .5em;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+#cd-top-nav a.current {
+  background-color: #540b52;
+}
+.no-touch #cd-top-nav a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+/*@media only screen and (min-width: 768px) {
+  #cd-top-nav {
+    display: block;
+  }
+}
+*/
+#cd-menu-trigger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  background-color:#5bc6d6;  /* ##################  BG - Menu Botton 3 line ########################## */
+}
+#cd-menu-trigger .cd-menu-text {
+  height: 100%;
+  text-transform: uppercase;
+  color: #FFF;
+  font-weight: 600;
+  display: none;
+}
+#cd-menu-trigger .cd-menu-icon {
+  /* this span is the central line in the menu menu */
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 18px;
+  height: 2px;
+  background-color: #FFF;  /* ##################  color - Menu Botton 3 line ########################## */
+  /* these are the upper and lower lines in the menu menu */
+}
+#cd-menu-trigger .cd-menu-icon::before, #cd-menu-trigger .cd-menu-icon:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: inherit;
+  left: 0;
+}
+#cd-menu-trigger .cd-menu-icon::before {
+  bottom: 5px;
+}
+#cd-menu-trigger .cd-menu-icon::after {
+  top: 5px;
+}
+#cd-menu-trigger.is-clicked .cd-menu-icon {
+  background-color: rgba(255, 255, 255, 0); /* #### line2 menu over : none ###*/
+}
+#cd-menu-trigger.is-clicked .cd-menu-icon::before, #cd-menu-trigger.is-clicked .cd-menu-icon::after {
+  background-color: white;
+}
+#cd-menu-trigger.is-clicked .cd-menu-icon::before {
+  bottom: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#cd-menu-trigger.is-clicked .cd-menu-icon::after {
+  top: 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+/*@media only screen and (min-width: 768px) {
+  #cd-menu-trigger {
+    width: 60px;
+    padding-left: 0;
+  }
+  #cd-menu-trigger .cd-menu-text {
+    display: inline-block;
+    line-height: 60px;
+  }
+  #cd-menu-trigger .cd-menu-icon {
+    left: auto;
+    right: 1.25em;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+}*/
+
+
+#cd-lateral-nav {
+  position: fixed;
+  z-index:9999;
+  height: 100%;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+  /* the secondary navigation is covered by the main element */
+  z-index: 1;
+  width: 260px;
+  background-color: #5bc6d6;
+  overflow-y: auto;
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: -webkit-transform .4s 0s, visibility 0s .4s;
+  -moz-transition: -moz-transform .4s 0s, visibility 0s .4s;
+  transition: transform .4s 0s, visibility 0s .4s;
+  /* this creates the subtle slide in animation of the navigation */
+  -webkit-transform: translateX(80px);
+  -moz-transform: translateX(80px);
+  -ms-transform: translateX(80px);
+  -o-transform: translateX(80px);
+  transform: translateX(80px);
+}
+#cd-lateral-nav .cd-navigation {
+  margin: 10px 0 16px;
+  list-style: none; margin:0; padding:0;  /* ##### list-style --- ul ol #####*/
+}
+#cd-lateral-nav .sub-menu {
+  list-style: none; margin:0; padding:0;  /* ##### list-style --- ul ol #####*/
+  padding: 0 10px 20px 15px;
+  display: none;
+  font-size:1em;
+}
+#cd-lateral-nav a {
+  display: block;
+  line-height: 2em;
+  padding: 14px 20px 14px 20px;
+  color: #fff;    /* ############################ - color submenu - ############################ */
+  font-size:18px;
+}
+
+#cd-lateral-nav a:hover {
+	background: rgba(255,255,255,.5);
+
+  /*color: #b998c3; */   /* ############################ - color submenu - ############################ */
+}
+#cd-lateral-nav a.current {
+  background: rgba(255,255,255,.5);
+  color: #FFF;
+}
+.no-touch #cd-lateral-nav a:hover {
+  color: #FFF;
+}
+/*@media only screen and (min-width: 768px) {
+  #cd-lateral-nav .cd-navigation {
+    margin: 20px 0;
+  }
+
+}*/
+#cd-lateral-nav.lateral-menu-is-open {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+  visibility: visible;
+  -webkit-transition: -webkit-transform .4s 0s, visibility 0s 0s;
+  -moz-transition: -moz-transform .4s 0s, visibility 0s 0s;
+  transition: transform .4s 0s, visibility 0s 0s;
+  /* smooth the scrolling on touch devices - webkit browsers */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* style menu items which have a submenu  */
+#cd-lateral-nav .item-has-children > a {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 600;
+  color:#fff;          /* ####################### - color title menu - ####################*/
+  padding-top:11px; padding-bottom:11px;
+  /* this is the right arrow to show that the item has a submenu  */
+}
+#cd-lateral-nav .item-has-children > a::after {
+  content: '';
+  display: block;
+  height: 11px;
+  width: 8px;
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 1em;
+  background:url(../images/template/arrowright.png) no-repeat center center;    /* ############ - Arrow title menu ยังไม่หมุน - ###########*/
+  background-size: 11px 11px;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  color:#fff;
+}
+#cd-lateral-nav .item-has-children > a.submenu-open::after {
+  -webkit-transform: translateY(-50%) rotate(90deg);
+  -moz-transform: translateY(-50%) rotate(90deg);
+  -ms-transform: translateY(-50%) rotate(90deg);
+  -o-transform: translateY(-50%) rotate(90deg);
+  transform: translateY(-50%) rotate(90deg);  /* ############ - Arrow title menu หมุนแล้ว - ###########*/
+  color:#fff;
+}
+
+#cd-lateral-nav .socials {
+  padding: 20 32px;
+}
+#cd-lateral-nav .socials:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#cd-lateral-nav .socials a {
+  height: 32px;
+  width: 32px;
+  float: left;
+  padding: 0;
+  background-image: url("../img/cd-socials.html");
+  background-repeat: no-repeat;
+  background-size: 128px 64px;
+  background-color: #FFF;
+  margin-right: .5em;
+  border-radius: 0.25em;
+}
+#cd-lateral-nav .socials a.cd-twitter {
+  background-position: 0 0;
+}
+#cd-lateral-nav .socials a.cd-github {
+  background-position: -32px 0;
+}
+#cd-lateral-nav .socials a.cd-facebook {
+  background-position: -64px 0;
+}
+#cd-lateral-nav .socials a.cd-google {
+  background-position: -96px 0;
+}
+.no-touch #cd-lateral-nav .socials a:hover {
+  background: rgba(42,0,40,1);
+  background: -moz-linear-gradient(-45deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(42,0,40,1)), color-stop(50%, rgba(50,1,48,1)), color-stop(100%, rgba(84,11,82,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  background: linear-gradient(135deg, rgba(42,0,40,1) 0%, rgba(50,1,48,1) 50%, rgba(84,11,82,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a0028', endColorstr='#540b52', GradientType=1 );
+}
+.no-touch #cd-lateral-nav .socials a:hover.cd-twitter {
+  background-position: 0 -32px;
+}
+.no-touch #cd-lateral-nav .socials a:hover.cd-github {
+  background-position: -32px -32px;
+}
+.no-touch #cd-lateral-nav .socials a:hover.cd-facebook {
+  background-position: -64px -32px;
+}
+.no-touch #cd-lateral-nav .socials a:hover.cd-google {
+  background-position: -96px -32px;
+}
+
+.submenu-step2{ margin-left:20px; color:#fff;}
+ul.submenu-step3{color:#fff; list-style:none;padding:0; margin:0; }
+ul.submenu-step3 li{padding-left:20px;}
