@@ -82,7 +82,7 @@
 </header>
 
 <header class=" mobile-tablet_show">
-    <a id="cd-logo" href="index.php"><img src="images/logo-1.png" height="60"></a>
+    <a id="cd-logo" href="index.php"><img src="{{asset('assets/images/logo-1.png')}}" height="60"></a>
 <!--    <a href="#" class="username"><img src="images/template/icon_user.png" class="right12"><span style="color:#2f2f2f;">USERNAME</span></a>-->
     <a id="cd-menu-trigger" href="#0" class=""><span class="cd-menu-icon"></span></a>
 </header>
@@ -108,64 +108,12 @@
             <a href="product_en.php">PRODUCT</a>
             <ul class="sub-menu">
                 <li><a href="product_en.php"><i class="fa fa-arrow-circle-right"></i>&nbsp; All Product</a>
+                @foreach(App\ProductsCategory::all() as $item)
+                <li><a href="{{route('searchbycategory',['id'=>$item->id])}}"><i class="fa fa-arrow-circle-right"></i>&nbsp; {{$item->title}}</a>
 
-                <li><a href="AntiAgingSerum.php"><i class="fa fa-arrow-circle-right"></i>&nbsp; Anti Aging Serum</a>
+                @endforeach
 
-                </li>
-
-                <li><a href="BodyLotion.php"><i class="fa fa-arrow-circle-right"></i>&nbsp;Body Lotion</a>
-
-                </li>
-
-                <li><a href="FaceLotion.php"><i class="fa fa-arrow-circle-right"></i>&nbsp; Face Lotion</a>
-
-                </li>
-
-
-                </li>
-
-                <li><a href="BodyLotion.php"><i class="fa fa-arrow-circle-right"></i>&nbsp; Body Lotion</a>
-
-                </li>
-
-                <li><a href="HairCoat.php"><i class="fa fa-arrow-circle-right"></i>&nbsp;Hair Coat</a>
-
-                </li>
-
-                <li><a href="LaginnySoap.php"><i class="fa fa-arrow-circle-right"></i>&nbsp;Laginny Soap</a>
-
-                </li>
-
-                <li><a href="PeelOffMask.php"><i class="fa fa-arrow-circle-right"></i>Peel Off Mask</a>
-
-                </li>
-
-                <li><a href="WhiteningFaceWashFoam.php"><i class="fa fa-arrow-circle-right"></i>&nbsp;Whitening Face Wash Foam</a>
-
-                </li>
-
-                <li><a href="WhiteningFaceWashFoamMen.php"><i class="fa fa-arrow-circle-right"></i>Whitening Face Wash Foam Men</a>
-
-                </li>
-
-                <li><a href="WhiteningFaceWashFoam.php"><i class="fa fa-arrow-circle-right"></i>Whitening Shower Cream</a>
-
-                </li>
-                <li><a href="SUNSCREENPROTECTIONCREAM.php"><i class="fa fa-arrow-circle-right"></i>Sunscreen Protection Cream</a>
-
-                </li>
-                <li><a href="LAGINNYEYECREAM.php"><i class="fa fa-arrow-circle-right"></i>Laginny Eye Cream</a>
-
-                </li>
-                <li><a href="LAGINNYWHITNINGPEARL.php"><i class="fa fa-arrow-circle-right"></i>Laginny Whitening Pearl</a>
-
-                </li>
-                <li><a href="LAGINNYWHITININGBODY.php"><i class="fa fa-arrow-circle-right"></i>Laginny  Whitening Body</a>
-
-                </li>
-                <li><a href="LAGINNYHAIR.php"><i class="fa fa-arrow-circle-right"></i>Laginny Hair</a>
-
-                </li>
+               
 
 
 

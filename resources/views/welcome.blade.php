@@ -4,6 +4,8 @@ use App\Products;
 
 @extends('layouts.app')
 @section('content')
+<div class="clear"></div>
+<div class="top64 mobile-tablet_show"></div>
 @include('components.banner')
 <div class="clear"></div>
 <section>
@@ -69,7 +71,7 @@ use App\Products;
             <div class="clear"></div>
             <div class="col_product" style="width: 100%;">
                 @foreach(App\Products::all() as $items )
-                
+
                 @if($items->type==2 & $items->status==1)
                 <div class="product-inner2" style="width:23%;">
                     <div class="product_img"><a href="{{route('productsdetails',['id'=>$items->id])}}"><img src="{{asset($items->image?$items->image:'')}}" border="0" width="100%" class=""></a></div>
@@ -140,21 +142,24 @@ use App\Products;
             <div class="form-group" metho="post" style="display: none;" >
             <input  type="text" class="form-control" name="id" id="id" value="" >    
             </div>
+
             <div class="form-group">
                 <label>Product Title</label>
             <input type="text" class="form-control" name="product_title" id="title" >    
             </div>
-            <div class="form-group">
+            <div class="row">
+            <div class="form-group col-xs-3">
                 <label>Product Qunatity </label>
             <input type="text" class="form-control" name="qty" id="qty" value="1">    
             </div>
-            <div class="form-group">
+            <div class="form-group col-xs-3">
                 <label>Product Price</label>
             <input type="text" class="form-control" name="price" id="price" value="">    
             </div>
-            <div class="form-group">
+            <div class="form-group  col-xs-3">
                 <label>Total Price</label>
             <input type="text" class="form-control" name="total_price" id="total" value="">    
+            </div>
             </div>
             <!-- <div class="form-group">
                 <label>Product Price</label>

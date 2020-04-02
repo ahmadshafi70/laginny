@@ -17,54 +17,25 @@
             </ul>
         </div>
 
-        <div class="sitemap left55"  style="width:38%;">
+        <div class="sitemap left55"  style="width:48%;">
             <div class="titllesitemap">Product</div>
             <ul class="sitemapfix fleft">
+            @foreach(App\ProductsCategory::all()->take(5) as $item)
                 <li>
-                    <a href="PeelOffMask.php"> Peel Off Mask </a>
+                <a href="{{route('searchbycategory',['id'=>$item->id])}}" >{{$item->title}}</a>
+                    
                 </li>
-                <li>
-                    <!--                                                    <a href="WhiteningFaceWashFoam.html">Whitening FaceWash Foam </a>-->
-                    <a href="AntiAgingSerum.php"> Anti Aging Serum </a>
-                </li>
-                <li>
-                    <!--                                                    <a href=" WhiteningFaceWashFoamMen.html">Whitening FaceWash Foam Men </a>-->
-                    <a href="BodyLotion.php"> Body Lotion </a>
-                </li>
-                <li>
-                    <a href="MiracleSet.php"> Miracle Set </a>
-                </li>
-                <li>
-                    <a href="LaginnySoap.php"> Laginny Soap </a>
-                </li>
-                <li>
-                    <a href="HairCoat.php"> Hair Coat </a>
-                </li>
-                <!--<li><a href="#">SOAP</a></li>
-<li><a href="#">FACE WASH TONER</a></li>
-<li><a href="#">FACIAL CREAM</a></li>
-<li><a href="#">GOLD SERIES</a></li>
-<li><a href="#">PEEL-OFF MASK</a></li>-->
+            @endforeach
             </ul>
             <ul class="sitemapfix fleft">
+            @foreach(App\ProductsCategory::all()->skip(5)->take(5) as $item)
                 <li>
-                    <a href="AntiAgingSerum.php"> Anti Aging Serum </a>
+                <a href="{{route('searchbycategory',['id'=>$item->id])}}" >{{$item->title}}</a>
+                    
                 </li>
-                <li>
-                    <a href="BodyLotion.php"> Body Lotion </a>
-                </li>
-                <li>
-                    <a href="FaceLotion.php"> Face Lotion </a>
-                </li>
-                <li>
-                    <a href=" WhiteningShowerCream.php"> Whitening Shower Cream </a>
-                </li>
+            @endforeach
+               
 
-                <!--<li><a href="#">SPACIAL SOAP</a></li>
-<li><a href="#">FACIAL SCRUB</a></li>
-<li><a href="#">BODY LOTION</a></li>
-<li><a href="#">MILK SERIES</a></li>
-<li><a href="#">SALT</a></li>-->
             </ul>
         </div>
 

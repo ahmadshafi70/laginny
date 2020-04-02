@@ -60,32 +60,39 @@
         <div class="clear"></div>
     </section>
 
-      <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Fill Your Inquiry Header</h4>
         </div>
         <div class="modal-body">
           <form action="{{route('sendmail')}}"  method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group" metho="post" style="display: none;" >
-            <input  type="text" class="form-control" name="id" id="id" value="">    
+            <input  type="text" class="form-control" name="id" id="id" value="" >    
             </div>
+
             <div class="form-group">
+                <label>Product Title</label>
+            <input type="text" class="form-control" name="product_title" id="title" >    
+            </div>
+            <div class="row">
+            <div class="form-group col-xs-3">
                 <label>Product Qunatity </label>
             <input type="text" class="form-control" name="qty" id="qty" value="1">    
             </div>
-            <div class="form-group">
+            <div class="form-group col-xs-3">
                 <label>Product Price</label>
             <input type="text" class="form-control" name="price" id="price" value="">    
             </div>
-            <div class="form-group">
+            <div class="form-group  col-xs-3">
                 <label>Total Price</label>
             <input type="text" class="form-control" name="total_price" id="total" value="">    
+            </div>
             </div>
             <!-- <div class="form-group">
                 <label>Product Price</label>
@@ -93,27 +100,27 @@
             </div> -->
             <div class="form-group">
                 <label>Your Full Name</label>
-            <input type="text" class="form-control" name="name" id="name" value="">    
+            <input type="text" class="form-control" name="name" id="name" value="" required>    
             </div>
             <div class="form-group">
                 <label>Your Email</label>
-            <input type="text" class="form-control" name="email" id="email" value="">    
+            <input type="text" class="form-control" name="email" id="email" value="" required>    
             </div>
             <div class="form-group">
                 <label>Your Phone</label>
-            <input type="text" class="form-control" name="phone" id="phone" value="">    
+            <input type="text" class="form-control" name="phone" id="phone" value="" required>    
             </div>
             <div class="form-group">
-                <label>Your Address</label>
-            <input type="text" class="form-control" name="address" id="address" value="">    
+                <label> Your Address</label>
+            <input type="text" class="form-control" name="address" id="address" value="" required>    
             </div>
             <div class="form-group">
                 <label>Your Country</label>
-            <input type="text" class="form-control" name="country" id="country" value="">    
+            <input type="text" class="form-control" name="country" id="country" value="" required>    
             </div>
             <div class="form-group">
                 <label>Description</label>
-            <textarea type="text" class="form-control" name="message" id="message" ></textarea>    
+            <textarea type="text" class="form-control" name="message" id="message" required></textarea>    
             </div>
                 <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
